@@ -20,7 +20,16 @@ module neopixel_led_controller(
     output logic [8:0] segment_led_1_o,    // FPS Counter
     output logic [8:0] segment_led_2_o,    // FPS Counter
 
-    output logic [15:0] neopixel_code_o
+    output logic       hub75e_r0_o,
+    output logic       hub75e_g0_o,
+    output logic       hub75e_b0_o,
+    output logic       hub75e_r1_o,
+    output logic       hub75e_g1_o,
+    output logic       hub75e_b1_o,
+    output logic       hub75e_oe_o,
+    output logic       hub75e_clk_o,
+    output logic       hub75e_lat_o,
+    output logic [4:0] hub75e_addr_o
 );
 
 logic sys_clk;
@@ -56,88 +65,105 @@ sys_ctl sys_ctl(
     .sys_rst_n_o(sys_rst_n)
 );
 
-spi_slave spi_slave(
+waveform_gen waveform_gen(
     .clk_i(sys_clk),
     .rst_n_i(sys_rst_n),
 
-    .spi_byte_data_i(reg_rd_data),
+    .hub75e_r0_o(hub75e_r0_o),
+    .hub75e_g0_o(hub75e_g0_o),
+    .hub75e_b0_o(hub75e_b0_o),
+    .hub75e_r1_o(hub75e_r1_o),
+    .hub75e_g1_o(hub75e_g1_o),
+    .hub75e_b1_o(hub75e_b1_o),
 
-    .spi_sclk_i(spi_sclk_i),
-    .spi_mosi_i(spi_mosi_i),
-    .spi_cs_n_i(spi_cs_n_i),
-
-    .spi_miso_o(spi_miso_o),
-
-    .spi_byte_vld_o(spi_byte_vld),
-    .spi_byte_data_o(spi_byte_data)
+    .hub75e_oe_o(hub75e_oe_o),
+    .hub75e_clk_o(hub75e_clk_o),
+    .hub75e_lat_o(hub75e_lat_o),
+    .hub75e_addr_o(hub75e_addr_o)
 );
 
-channel_ctl channel_ctl(
-    .clk_i(sys_clk),
-    .rst_n_i(sys_rst_n),
+// spi_slave spi_slave(
+//     .clk_i(sys_clk),
+//     .rst_n_i(sys_rst_n),
 
-    .dc_i(dc_i),
+//     .spi_byte_data_i(reg_rd_data),
 
-    .spi_byte_vld_i(spi_byte_vld),
-    .spi_byte_data_i(spi_byte_data),
+//     .spi_sclk_i(spi_sclk_i),
+//     .spi_mosi_i(spi_mosi_i),
+//     .spi_cs_n_i(spi_cs_n_i),
 
-    .reg_chan_len_i(reg_chan_len),
-    .reg_chan_cnt_i(reg_chan_cnt),
+//     .spi_miso_o(spi_miso_o),
 
-    .reg_rd_addr_o(reg_rd_addr),
+//     .spi_byte_vld_o(spi_byte_vld),
+//     .spi_byte_data_o(spi_byte_data)
+// );
 
-    .reg_wr_en_o(reg_wr_en),
-    .reg_wr_addr_o(reg_wr_addr),
+// channel_ctl channel_ctl(
+//     .clk_i(sys_clk),
+//     .rst_n_i(sys_rst_n),
 
-    .ram_wr_en_o(ram_wr_en),
-    .ram_wr_done_o(ram_wr_done),
-    .ram_wr_addr_o(ram_wr_addr),
-    .ram_wr_byte_en_o(ram_wr_byte_en)
-);
+//     .dc_i(dc_i),
 
-genvar i;
-generate
-    for (i = 0; i < 16; i++) begin: channel
-        channel_out out(
-            .clk_i(sys_clk),
-            .rst_n_i(sys_rst_n),
+//     .spi_byte_vld_i(spi_byte_vld),
+//     .spi_byte_data_i(spi_byte_data),
 
-            .reg_t0h_time_i(reg_t0h_time),
-            .reg_t0s_time_i(reg_t0s_time),
-            .reg_t1h_time_i(reg_t1h_time),
-            .reg_t1s_time_i(reg_t1s_time),
+//     .reg_chan_len_i(reg_chan_len),
+//     .reg_chan_cnt_i(reg_chan_cnt),
 
-            .ram_wr_en_i(ram_wr_en[i]),
-            .ram_wr_done_i(ram_wr_done),
-            .ram_wr_addr_i(ram_wr_addr),
-            .ram_wr_data_i(spi_byte_data),
-            .ram_wr_byte_en_i(ram_wr_byte_en),
+//     .reg_rd_addr_o(reg_rd_addr),
 
-            .bit_code_o(neopixel_code_o[i])
-        );
-    end
-endgenerate
+//     .reg_wr_en_o(reg_wr_en),
+//     .reg_wr_addr_o(reg_wr_addr),
 
-regfile regfile(
-    .clk_i(sys_clk),
-    .rst_n_i(sys_rst_n),
+//     .ram_wr_en_o(ram_wr_en),
+//     .ram_wr_done_o(ram_wr_done),
+//     .ram_wr_addr_o(ram_wr_addr),
+//     .ram_wr_byte_en_o(ram_wr_byte_en)
+// );
 
-    .reg_rd_addr_i(reg_rd_addr),
+// genvar i;
+// generate
+//     for (i = 0; i < 16; i++) begin: channel
+//         channel_out out(
+//             .clk_i(sys_clk),
+//             .rst_n_i(sys_rst_n),
 
-    .reg_wr_en_i(reg_wr_en),
-    .reg_wr_addr_i(reg_wr_addr),
-    .reg_wr_data_i(spi_byte_data),
+//             .reg_t0h_time_i(reg_t0h_time),
+//             .reg_t0s_time_i(reg_t0s_time),
+//             .reg_t1h_time_i(reg_t1h_time),
+//             .reg_t1s_time_i(reg_t1s_time),
 
-    .reg_t0h_time_o(reg_t0h_time),
-    .reg_t0s_time_o(reg_t0s_time),
-    .reg_t1h_time_o(reg_t1h_time),
-    .reg_t1s_time_o(reg_t1s_time),
+//             .ram_wr_en_i(ram_wr_en[i]),
+//             .ram_wr_done_i(ram_wr_done),
+//             .ram_wr_addr_i(ram_wr_addr),
+//             .ram_wr_data_i(spi_byte_data),
+//             .ram_wr_byte_en_i(ram_wr_byte_en),
 
-    .reg_chan_len_o(reg_chan_len),
-    .reg_chan_cnt_o(reg_chan_cnt),
+//             .bit_code_o(neopixel_code_o[i])
+//         );
+//     end
+// endgenerate
 
-    .reg_rd_data_o(reg_rd_data)
-);
+// regfile regfile(
+//     .clk_i(sys_clk),
+//     .rst_n_i(sys_rst_n),
+
+//     .reg_rd_addr_i(reg_rd_addr),
+
+//     .reg_wr_en_i(reg_wr_en),
+//     .reg_wr_addr_i(reg_wr_addr),
+//     .reg_wr_data_i(spi_byte_data),
+
+//     .reg_t0h_time_o(reg_t0h_time),
+//     .reg_t0s_time_o(reg_t0s_time),
+//     .reg_t1h_time_o(reg_t1h_time),
+//     .reg_t1s_time_o(reg_t1s_time),
+
+//     .reg_chan_len_o(reg_chan_len),
+//     .reg_chan_cnt_o(reg_chan_cnt),
+
+//     .reg_rd_data_o(reg_rd_data)
+// );
 
 fps_counter fps_counter(
     .clk_i(sys_clk),

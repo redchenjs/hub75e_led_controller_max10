@@ -88,22 +88,19 @@ set_location_assignment PIN_P1 -to segment_led_2_o[3]
 set_location_assignment PIN_P2 -to segment_led_2_o[2]
 set_location_assignment PIN_A2 -to segment_led_2_o[1]
 set_location_assignment PIN_A3 -to segment_led_2_o[0]
-set_location_assignment PIN_C8 -to neopixel_code_o[15]
-set_location_assignment PIN_B7 -to neopixel_code_o[14]
-set_location_assignment PIN_D7 -to neopixel_code_o[13]
-set_location_assignment PIN_E7 -to neopixel_code_o[12]
-set_location_assignment PIN_B6 -to neopixel_code_o[11]
-set_location_assignment PIN_A7 -to neopixel_code_o[10]
-set_location_assignment PIN_A5 -to neopixel_code_o[9]
-set_location_assignment PIN_B4 -to neopixel_code_o[8]
-set_location_assignment PIN_R5 -to neopixel_code_o[7]
-set_location_assignment PIN_L7 -to neopixel_code_o[6]
-set_location_assignment PIN_P4 -to neopixel_code_o[5]
-set_location_assignment PIN_L6 -to neopixel_code_o[4]
-set_location_assignment PIN_R3 -to neopixel_code_o[3]
-set_location_assignment PIN_M5 -to neopixel_code_o[2]
-set_location_assignment PIN_P3 -to neopixel_code_o[1]
-set_location_assignment PIN_M4 -to neopixel_code_o[0]
+set_location_assignment PIN_B14 -to hub75e_r0_o
+set_location_assignment PIN_B15 -to hub75e_g0_o
+set_location_assignment PIN_B13 -to hub75e_b0_o
+set_location_assignment PIN_B11 -to hub75e_r1_o
+set_location_assignment PIN_A14 -to hub75e_g1_o
+set_location_assignment PIN_A11 -to hub75e_b1_o
+set_location_assignment PIN_E7 -to hub75e_oe_o
+set_location_assignment PIN_D7 -to hub75e_clk_o
+set_location_assignment PIN_B7 -to hub75e_lat_o
+set_location_assignment PIN_B8 -to hub75e_addr_o[3]
+set_location_assignment PIN_C8 -to hub75e_addr_o[2]
+set_location_assignment PIN_A9 -to hub75e_addr_o[1]
+set_location_assignment PIN_D10 -to hub75e_addr_o[0]
 
 # Classic Timing Assignments
 # ==========================
@@ -128,7 +125,7 @@ set_global_assignment -name TOP_LEVEL_ENTITY neopixel_led_controller
 
 # Fitter Assignments
 # ==================
-set_global_assignment -name DEVICE 10M08SCM153C8G
+set_global_assignment -name DEVICE 10M08SAM153C8G
 set_global_assignment -name SYNCHRONIZER_IDENTIFICATION AUTO
 set_global_assignment -name PHYSICAL_SYNTHESIS_ASYNCHRONOUS_SIGNAL_PIPELINING ON
 set_global_assignment -name ROUTER_CLOCKING_TOPOLOGY_ANALYSIS ON
@@ -159,8 +156,8 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test
-	set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test -section_id test
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test -section_id test
 
 # end EDA_TEST_BENCH_SETTINGS(test)
 # ---------------------------------
@@ -170,9 +167,8 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_top
-	set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_top -section_id test_top
-	set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_top.sv -section_id test_top
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_top
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_top -section_id test_top
 
 # end EDA_TEST_BENCH_SETTINGS(test_top)
 # -------------------------------------
@@ -182,9 +178,8 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_regfile
-	set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_regfile -section_id test_regfile
-	set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_regfile.sv -section_id test_regfile
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_regfile
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_regfile -section_id test_regfile
 
 # end EDA_TEST_BENCH_SETTINGS(test_regfile)
 # -----------------------------------------
@@ -194,9 +189,8 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_rst_syn
-	set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_rst_syn -section_id test_rst_syn
-	set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_rst_syn.sv -section_id test_rst_syn
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_rst_syn
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_rst_syn -section_id test_rst_syn
 
 # end EDA_TEST_BENCH_SETTINGS(test_rst_syn)
 # -----------------------------------------
@@ -206,9 +200,8 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_edge2en
-	set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_edge2en -section_id test_edge2en
-	set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_edge2en.sv -section_id test_edge2en
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_edge2en
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_edge2en -section_id test_edge2en
 
 # end EDA_TEST_BENCH_SETTINGS(test_edge2en)
 # -----------------------------------------
@@ -218,9 +211,8 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_spi_slave
-	set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_spi_slave -section_id test_spi_slave
-	set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_spi_slave.sv -section_id test_spi_slave
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_spi_slave
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_spi_slave -section_id test_spi_slave
 
 # end EDA_TEST_BENCH_SETTINGS(test_spi_slave)
 # -------------------------------------------
@@ -230,9 +222,8 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_channel_ctl
-	set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_channel_ctl -section_id test_channel_ctl
-	set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_channel_ctl.sv -section_id test_channel_ctl
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_channel_ctl
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_channel_ctl -section_id test_channel_ctl
 
 # end EDA_TEST_BENCH_SETTINGS(test_channel_ctl)
 # ---------------------------------------------
@@ -242,9 +233,8 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_channel_out
-	set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_channel_out -section_id test_channel_out
-	set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_channel_out.sv -section_id test_channel_out
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_channel_out
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_channel_out -section_id test_channel_out
 
 # end EDA_TEST_BENCH_SETTINGS(test_channel_out)
 # ---------------------------------------------
@@ -254,9 +244,8 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_waveform_ctl
-	set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_waveform_ctl -section_id test_waveform_ctl
-	set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_waveform_ctl.sv -section_id test_waveform_ctl
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_waveform_ctl
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_waveform_ctl -section_id test_waveform_ctl
 
 # end EDA_TEST_BENCH_SETTINGS(test_waveform_ctl)
 # ----------------------------------------------
@@ -266,9 +255,8 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_waveform_gen
-	set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_waveform_gen -section_id test_waveform_gen
-	set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_waveform_gen.sv -section_id test_waveform_gen
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id test_waveform_gen
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME test_waveform_gen -section_id test_waveform_gen
 
 # end EDA_TEST_BENCH_SETTINGS(test_waveform_gen)
 # ----------------------------------------------
@@ -278,20 +266,20 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
-	set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
-	set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-	set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH test_top -section_id eda_simulation
-	set_global_assignment -name EDA_TEST_BENCH_NAME test_top -section_id eda_simulation
-	set_global_assignment -name EDA_TEST_BENCH_NAME test_regfile -section_id eda_simulation
-	set_global_assignment -name EDA_TEST_BENCH_NAME test_rst_syn -section_id eda_simulation
-	set_global_assignment -name EDA_TEST_BENCH_NAME test_edge2en -section_id eda_simulation
-	set_global_assignment -name EDA_TEST_BENCH_NAME test_spi_slave -section_id eda_simulation
-	set_global_assignment -name EDA_TEST_BENCH_NAME test_channel_ctl -section_id eda_simulation
-	set_global_assignment -name EDA_TEST_BENCH_NAME test_channel_out -section_id eda_simulation
-	set_global_assignment -name EDA_TEST_BENCH_NAME test_waveform_ctl -section_id eda_simulation
-	set_global_assignment -name EDA_TEST_BENCH_NAME test_waveform_gen -section_id eda_simulation
-	set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR sim/modelsim -section_id eda_simulation
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH test_waveform_gen -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME test_top -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME test_regfile -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME test_rst_syn -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME test_edge2en -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME test_spi_slave -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME test_channel_ctl -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME test_channel_out -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME test_waveform_ctl -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_NAME test_waveform_gen -section_id eda_simulation
+set_global_assignment -name EDA_NETLIST_WRITER_OUTPUT_DIR sim/modelsim -section_id eda_simulation
 
 # end EDA_TOOL_SETTINGS(eda_simulation)
 # -------------------------------------
@@ -301,7 +289,7 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
 
 # end EDA_TOOL_SETTINGS(eda_board_design_boundary_scan)
 # -----------------------------------------------------
@@ -311,7 +299,7 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_timing
 
 # end EDA_TOOL_SETTINGS(eda_board_design_timing)
 # ----------------------------------------------
@@ -321,7 +309,7 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 
 # end EDA_TOOL_SETTINGS(eda_board_design_symbol)
 # ----------------------------------------------
@@ -331,7 +319,7 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# EDA Netlist Writer Assignments
 	# ==============================
-	set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
+set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 
 # end EDA_TOOL_SETTINGS(eda_board_design_signal_integrity)
 # --------------------------------------------------------
@@ -341,104 +329,107 @@ set_global_assignment -name POWER_DEFAULT_INPUT_IO_TOGGLE_RATE "12.5 %"
 
 	# Pin & Location Assignments
 	# ==========================
-	set_instance_assignment -name FAST_INPUT_REGISTER ON -to clk_i
-	set_instance_assignment -name FAST_INPUT_REGISTER ON -to rst_n_i
-	set_instance_assignment -name FAST_INPUT_REGISTER ON -to dc_i
-	set_instance_assignment -name FAST_INPUT_REGISTER ON -to spi_sclk_i
-	set_instance_assignment -name FAST_INPUT_REGISTER ON -to spi_mosi_i
-	set_instance_assignment -name FAST_INPUT_REGISTER ON -to spi_cs_n_i
-	set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to spi_miso_o
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[8]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[7]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[6]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[5]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[4]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[3]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[2]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[1]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[0]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[8]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[7]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[6]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[5]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[4]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[3]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[2]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[1]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[0]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[15]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[14]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[13]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[12]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[11]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[10]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[9]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[8]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[7]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[6]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[5]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[4]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[3]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[2]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[1]
-	set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to neopixel_code_o[0]
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to clk_i
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to rst_n_i
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to dc_i
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to spi_sclk_i
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to spi_mosi_i
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to spi_cs_n_i
+set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to spi_miso_o
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[8]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[7]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[6]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[5]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[4]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[3]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[2]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[1]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_1_o[0]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[8]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[7]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[6]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[5]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[4]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[3]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[2]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[1]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to segment_led_2_o[0]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_r0_o
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_g0_o
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_b0_o
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_r1_o
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_g1_o
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_b1_o
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_oe_o
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_clk_o
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_lat_o
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_addr_o[3]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_addr_o[2]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_addr_o[1]
+set_instance_assignment -name FAST_OUTPUT_REGISTER OFF -to hub75e_addr_o[0]
 
 	# Fitter Assignments
 	# ==================
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clk_i
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to rst_n_i
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to dc_i
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to spi_sclk_i
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to spi_mosi_i
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to spi_cs_n_i
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to spi_miso_o
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[8]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[7]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[6]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[5]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[4]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[3]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[2]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[1]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[0]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[8]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[7]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[6]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[5]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[4]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[3]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[2]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[1]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[0]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[15]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[14]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[13]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[12]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[11]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[10]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[9]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[8]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[7]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[6]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[5]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[4]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[3]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[2]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[1]
-	set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to neopixel_code_o[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to clk_i
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to rst_n_i
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to dc_i
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to spi_sclk_i
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to spi_mosi_i
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to spi_cs_n_i
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to spi_miso_o
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_1_o[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to segment_led_2_o[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_r0_o
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_g0_o
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_b0_o
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_r1_o
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_g1_o
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_b1_o
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_oe_o
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_clk_o
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_lat_o
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_addr_o[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_addr_o[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_addr_o[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hub75e_addr_o[0]
 
 	# start DESIGN_PARTITION(Top)
 	# ---------------------------
 
 		# Incremental Compilation Assignments
 		# ===================================
-		set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-		set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-		set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 
 	# end DESIGN_PARTITION(Top)
 	# -------------------------
 
 # end ENTITY(neopixel_led_controller)
 # -----------------------------------
+set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_top.sv -section_id test_top
+set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_regfile.sv -section_id test_regfile
+set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_rst_syn.sv -section_id test_rst_syn
+set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_edge2en.sv -section_id test_edge2en
+set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_spi_slave.sv -section_id test_spi_slave
+set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_channel_ctl.sv -section_id test_channel_ctl
+set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_channel_out.sv -section_id test_channel_out
+set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_waveform_ctl.sv -section_id test_waveform_ctl
+set_global_assignment -name EDA_TEST_BENCH_FILE sim/test_waveform_gen.sv -section_id test_waveform_gen
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

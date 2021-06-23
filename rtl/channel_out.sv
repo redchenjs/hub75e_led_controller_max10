@@ -53,20 +53,20 @@ waveform_ctl waveform_ctl(
     .ram_rd_addr_o(ram_rd_addr)
 );
 
-waveform_gen waveform_gen(
-    .clk_i(clk_i),
-    .rst_n_i(rst_n_i),
+// waveform_gen waveform_gen(
+//     .clk_i(clk_i),
+//     .rst_n_i(rst_n_i),
 
-    .bit_vld_i(bit_vld),
-    .bit_data_i(bit_data),
+//     .bit_vld_i(bit_vld),
+//     .bit_data_i(bit_data),
 
-    .reg_t0h_time_i(reg_t0h_time_i),
-    .reg_t0s_time_i(reg_t0s_time_i),
-    .reg_t1h_time_i(reg_t1h_time_i),
-    .reg_t1s_time_i(reg_t1s_time_i),
+//     .reg_t0h_time_i(reg_t0h_time_i),
+//     .reg_t0s_time_i(reg_t0s_time_i),
+//     .reg_t1h_time_i(reg_t1h_time_i),
+//     .reg_t1s_time_i(reg_t1s_time_i),
 
-    .bit_rdy_o(bit_rdy),
-    .bit_code_o(bit_code_o)
-);
+//     .bit_rdy_o(bit_rdy),
+//     .bit_code_o(bit_code_o)
+// );
 
 endmodule
